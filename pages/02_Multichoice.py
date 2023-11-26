@@ -62,7 +62,7 @@ if setup := current_setup.get():
             if mode == MODE_IMAGE_COMMON or mode == MODE_IMAGE_LATIN:
                 st.image(answer["image"])
 
-            name = answer["latin"] if mode==MODE_TEXT_LATIN else answer["common"]
+            name = answer["latin"] if mode == MODE_TEXT_LATIN else answer["common"]
 
             button_name = "Choose" if mode in [MODE_IMAGE_COMMON, MODE_IMAGE_LATIN] else name
 
