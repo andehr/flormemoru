@@ -65,3 +65,13 @@ if flower := current_flower.get():
                 st.text("*")
 
     answer = st.text_input("Answer")
+
+    if st.button("Submit", disabled=not answer, use_container_width=True):
+        if answer.strip().lower() == name.lower():
+            st.toast("Correct! :white_check_mark:")
+            time.sleep(0.7)
+            current_flower(random.choice(image_data))
+            current_revealed([])
+            st.rerun()
+        else:
+            st.toast("Wrong! :repeat:")
