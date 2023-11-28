@@ -37,6 +37,8 @@ current_revealed.init([])
 
 image_data = get_image_data()
 
+st.title("Spell the flower")
+
 mode = st.selectbox("Mode", options=[MODE_COMMON, MODE_LATIN])
 
 if st.button("Start", use_container_width=True):
