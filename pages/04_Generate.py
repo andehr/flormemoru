@@ -119,6 +119,5 @@ if key and chat_model:
                 st.download_button(label='Download Images', data=f, file_name=zip_filename, mime='application/zip', use_container_width=True)
 
 else:
-    st.write("Visit the Setup page to configure language and model settings before using this page.")
-    if st.button("Setup"):
-        switch_page("Setup")
+    st.write("Enter your Open AI API key in the sidebar to use GPT to generate your flowers.")
+
