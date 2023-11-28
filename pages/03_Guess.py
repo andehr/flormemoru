@@ -25,6 +25,6 @@ if image_dict := current_image.get():
     st.image(image_dict["image"])
 
 if st.toggle("Show answer"):
-    st.write(image_dict["common"])
-    st.caption(image_dict["latin"])
+    st.header(image_dict["common"])
+    st.subheader(f"_{image_dict['latin']}_")
 

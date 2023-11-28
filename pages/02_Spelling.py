@@ -41,7 +41,7 @@ st.title("Spell the flower")
 
 mode = st.selectbox("Mode", options=[MODE_COMMON, MODE_LATIN])
 
-if st.button("Start", use_container_width=True):
+if st.button("Begin", use_container_width=True, type="primary"):
     current_flower(random.choice(image_data))
     current_revealed([])
 
@@ -51,7 +51,7 @@ if flower := current_flower.get():
 
     name = flower["common"] if mode == MODE_COMMON else flower["latin"]
 
-    if st.sidebar.button("Hint", use_container_width=True):
+    if st.sidebar.button("Hint", use_container_width=True, type="primary"):
         current_revealed(reveal_letter(name))
 
     revealed = current_revealed.get()
@@ -60,20 +60,22 @@ if flower := current_flower.get():
     for i, (letter, col) in enumerate(zip(name, letter_cols)):
         with col:
             if letter == " ":
-                st.header(" ")
+                st.header(" ", anchor=False)
             elif i in revealed:
-                st.header(letter)
+                st.header(letter, anchor=False)
             else:
-                st.header(":question:")
+                st.header(":question:", anchor=False)
 
     answer = st.text_input("Answer")
 
     if st.button("Submit", disabled=not answer, use_container_width=True):
         if answer.strip().lower() == name.lower():
             st.toast("Correct! :white_check_mark:")
+            st.success("Well done!")
             time.sleep(0.7)
             current_flower(random.choice(image_data))
             current_revealed([])
             st.rerun()
         else:
             st.toast("Wrong! :repeat:")
+            st.warning("Try again!")

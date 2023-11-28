@@ -34,7 +34,7 @@ with mode_col:
 with options_n_col:
     choice_size = st.slider("Choices", value=min(n, 4), min_value=2, max_value=n)
 
-if st.button("Start", use_container_width=True):
+if st.button("Start", use_container_width=True, type="primary"):
     current_setup(image_data)
 
 if setup := current_setup.get():

@@ -13,13 +13,14 @@ def get_image_data(directory: str = "images") -> List[Dict]:
 
         # List all PNG files in the directory
         for filename in os.listdir(directory):
-            if filename.endswith(".png"):
+            filename = filename.lower()
+            if filename.endswith(".png") or filename.endswith(".jpg"):
                 # Parse the filename
                 parts = filename[:-4].split("_")  # Remove .png and split
                 if len(parts) != 3:
                     continue  # Skip files that don't match the expected format
 
-                id_, common, latin = parts
+                id_, latin, common = parts
 
                 # Read the image and convert to BytesIO
                 with open(os.path.join(directory, filename), "rb") as img_file:
