@@ -10,6 +10,8 @@ from streamlithelpers import SessionObject
 from chat import stream_json, generate_images, OpenAiCompletionParameters, list_models
 from settings import api_key, model, model_params
 
+st.set_page_config(page_title="Generate", page_icon=":blossom:", layout="centered")
+
 
 @SessionObject("flower_names")
 def flower_names(n: int = 20) -> List[Dict[str, str]]:

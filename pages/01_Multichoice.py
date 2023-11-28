@@ -6,7 +6,7 @@ from streamlithelpers import SessionObject
 
 from images import get_image_data
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Multichoice", layout="wide", page_icon=":blossom:")
 
 MODE_IMAGE_COMMON = "image (by common name)"
 MODE_IMAGE_LATIN = "image (by latin name)"

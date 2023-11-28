@@ -5,7 +5,7 @@ from streamlithelpers import SessionObject
 
 from images import get_image_data
 
-st.set_page_config(layout="centered")
+st.set_page_config(page_title="Guess", page_icon=":blossom:", layout="centered")
 
 
 @SessionObject("current_guess_image")

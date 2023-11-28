@@ -7,7 +7,7 @@ from streamlithelpers import SessionObject
 
 from images import get_image_data
 
-st.set_page_config(layout="centered")
+st.set_page_config(page_title="Spelling", page_icon=":blossom:", layout="centered")
 
 MODE_COMMON = "common name"
 MODE_LATIN = "latin name"

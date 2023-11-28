@@ -14,9 +14,12 @@ def get_image_data(directory: str = "images") -> List[Dict]:
         # List all PNG files in the directory
         for filename in os.listdir(directory):
             filename = filename.lower()
-            if filename.endswith(".png") or filename.endswith(".jpg"):
+            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
+                last_fullstop_pos = filename.rfind('.')
+                filename = filename[:last_fullstop_pos] if last_fullstop_pos != -1 else filename
+
                 # Parse the filename
-                parts = filename[:-4].split("_")  # Remove .png and split
+                parts = filename.split("_")  # Remove .png and split
                 if len(parts) != 3:
                     continue  # Skip files that don't match the expected format
 
