@@ -1,5 +1,6 @@
 import io
 import os
+from pathlib import Path
 from typing import List, Dict
 
 import streamlit as st
@@ -7,26 +8,26 @@ import streamlit as st
 
 @st.cache_resource(ttl="1hr")
 def get_image_data(directory: str = "images") -> List[Dict]:
-
     with st.spinner("Loading flowers..."):
         image_data_list = []
 
-        # List all PNG files in the directory
-        for filename in os.listdir(directory):
-            filename = filename.lower()
-            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
-                last_fullstop_pos = filename.rfind('.')
-                filename = filename[:last_fullstop_pos] if last_fullstop_pos != -1 else filename
+        # Create a Path object for the directory
+        dir_path = Path(directory)
+
+        # List all PNG, JPG, JPEG files in the directory
+        for file_path in dir_path.iterdir():
+            if file_path.suffix.lower() in [".png", ".jpg", ".jpeg"]:
+                filename = file_path.stem  # Gets the filename without the extension
 
                 # Parse the filename
-                parts = filename.split("_")  # Remove .png and split
+                parts = filename.split("_")
                 if len(parts) != 3:
                     continue  # Skip files that don't match the expected format
 
                 id_, latin, common = parts
 
                 # Read the image and convert to BytesIO
-                with open(os.path.join(directory, filename), "rb") as img_file:
+                with open(file_path, "rb") as img_file:
                     image_bytes = io.BytesIO(img_file.read())
 
                 # Create the dictionary
