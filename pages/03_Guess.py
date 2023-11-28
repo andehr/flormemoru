@@ -7,6 +7,7 @@ from images import get_image_data
 
 st.set_page_config(layout="centered")
 
+
 @SessionObject("current_guess_image")
 def current_image(img):
     return img

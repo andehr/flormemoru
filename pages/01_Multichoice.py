@@ -24,7 +24,7 @@ def current_setup(image_data):
 image_data = get_image_data()
 n = len(image_data)
 
-st.title("Choose The Correct Flower")
+st.title("Choose the correct flower")
 
 mode_col, options_n_col = st.columns(2, gap="large")
 
