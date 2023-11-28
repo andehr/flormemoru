@@ -5,6 +5,7 @@ from streamlithelpers import SessionObject
 
 from images import get_image_data
 
+st.set_page_config(layout="centered")
 
 @SessionObject("current_guess_image")
 def current_image(img):
@@ -12,6 +13,8 @@ def current_image(img):
 
 
 image_data = get_image_data()
+
+st.title("Guess the flower")
 
 if st.button("Guess!", use_container_width=True, type="primary"):
     current_image(random.choice(image_data))

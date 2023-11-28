@@ -44,7 +44,7 @@ if st.button("Start", use_container_width=True):
     current_revealed([])
 
 if flower := current_flower.get():
-    st.header(f"How do you spelling the {mode} of the following flower?")
+    st.header(f"How do you spell the {mode} of the following flower?")
     st.image(flower["image"])
 
     name = flower["common"] if mode == MODE_COMMON else flower["latin"]
@@ -58,11 +58,11 @@ if flower := current_flower.get():
     for i, (letter, col) in enumerate(zip(name, letter_cols)):
         with col:
             if letter == " ":
-                st.text(" ")
+                st.header(" ")
             elif i in revealed:
-                st.text(letter)
+                st.header(letter)
             else:
-                st.text("*")
+                st.header(":question:")
 
     answer = st.text_input("Answer")
 

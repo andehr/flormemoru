@@ -24,6 +24,7 @@ def current_setup(image_data):
 image_data = get_image_data()
 n = len(image_data)
 
+st.title("Choose The Correct Flower")
 
 mode_col, options_n_col = st.columns(2, gap="large")
 
@@ -56,6 +57,8 @@ if setup := current_setup.get():
         with choice_cols[1]:
             st.image(correct_answer["image"])
 
+    status = st.empty()
+
     for i, answer in enumerate(answers):
         col = choice_cols[i % num_cols] if mode in [MODE_IMAGE_COMMON, MODE_IMAGE_LATIN] else choice_cols[0]
         with col:
@@ -69,9 +72,11 @@ if setup := current_setup.get():
             if st.button(button_name, key=f"choice_button_{i}", use_container_width=True):
                 if i == correct_answer_idx:
                     st.toast("Correct! :white_check_mark:")
+                    status.success("Well done!")
                     current_setup(image_data)
                     time.sleep(0.7)
                     st.rerun()
                 else:
+                    status.warning("Try again!")
                     st.toast("Wrong! :repeat:")
 
