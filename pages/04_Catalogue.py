@@ -22,11 +22,11 @@ def query(sort: str, filter: str):
             if not filter or filter in i["common"].lower() or filter in i["latin"].lower()]
 
 
-sort_col, filter_col, num_col = st.columns(3)
-sort = sort_col.selectbox("Sort by", options=["common name", "latin name"])
-filter = filter_col.text_input("Search")
-filter = filter if filter is None else filter.lower()
-num_col = num_col.slider("Columns", min_value=1, max_value=6, value=3)
+with st.sidebar:
+    sort = st.selectbox("Sort by", options=["common name", "latin name"])
+    filter = st.text_input("Search")
+    filter = filter if filter is None else filter.lower()
+    num_col = st.slider("Columns", min_value=1, max_value=6, value=3)
 
 image_cols = st.columns(num_col)
 
@@ -36,4 +36,7 @@ for i, image in enumerate(query(sort, filter)):
         st.write(image["common"])
         st.caption(image["latin"])
         st.image(image["image"])
+
+    if i % num_col == num_col-1:
+        image_cols = st.columns(num_col)
 
