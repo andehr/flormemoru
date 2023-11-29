@@ -35,7 +35,8 @@ def get_image_data(directory: str = "images") -> List[Dict]:
                     "id": id_,
                     "common": common.replace("-", " ").title(),
                     "latin": latin.replace("-", " ").title(),
-                    "image": image_bytes
+                    "image": image_bytes,
+                    "path": file_path
                 }
 
                 # Append the dictionary to the list
